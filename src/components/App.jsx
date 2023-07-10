@@ -1,12 +1,21 @@
 import { Filter } from 'components/Filter/Filter';
 import { AddContactForm } from 'components/AddForm/AddContactForm';
 import { ContactsList } from 'components/ContactsList/ContactsList';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/selectors';
+import { useEffect } from 'react';
+import { getAllContacts } from 'redux/operations';
 
 export const App = () => {
   const contacts = useSelector(selectContacts);
+  const dispatch = useDispatch();
   // console.log(contacts);
+  // const contactsTest = dispatch(getAllContacts());
+  // console.log(contactsTest);
+  useEffect(() => {
+    dispatch(getAllContacts());
+  }, []);
+
   return (
     <>
       <h1>Phonebook</h1>

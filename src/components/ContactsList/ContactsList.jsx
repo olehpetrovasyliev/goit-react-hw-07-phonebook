@@ -7,6 +7,8 @@ import {
 
 import { phonebookReducer } from 'redux/slice';
 import { selectContacts, selectFilter } from 'redux/selectors';
+import { delContact, getAllContacts } from 'redux/operations';
+import { useEffect } from 'react';
 
 export const ContactsList = () => {
   const dispatch = useDispatch();
@@ -22,10 +24,10 @@ export const ContactsList = () => {
     <ContactsListWrapper>
       {flteredContacts.map(contact => (
         <StyledContact key={contact.id}>
-          {contact.name}:{contact.number}
+          {contact.name}:{contact.phone}
           <DelBtnStyled
             onClick={() => {
-              dispatch(phonebookReducer.delContact(contact.id));
+              dispatch(delContact(contact.id));
             }}
           >
             Delete

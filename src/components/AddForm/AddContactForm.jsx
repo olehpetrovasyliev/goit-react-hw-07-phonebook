@@ -6,11 +6,12 @@ import { AddContactBtn } from './AddFormInpt/AddFormInput.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { phonebookReducer } from 'redux/slice';
 import { selectContacts } from 'redux/selectors';
+import { addContact } from 'redux/operations';
 
 export const AddContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
-  const [contact, setContact] = useState({ name: '', number: '' });
+  const [contact, setContact] = useState({ name: '', phone: '' });
 
   const handleChange = ({ target }) => {
     setContact(prev => ({ ...prev, [target.name]: target.value }));
@@ -21,9 +22,9 @@ export const AddContactForm = () => {
       return alert('Contact already exists');
     }
 
-    dispatch(phonebookReducer.addContact(contact));
+    dispatch(addContact(contact));
 
-    setContact({ name: '', number: '' });
+    setContact({ name: '', phone: '' });
   };
 
   return (
@@ -47,7 +48,7 @@ export const AddContactForm = () => {
       <label>
         Number
         <AddContactInput
-          name={'number'}
+          name={'phone'}
           type={'tel'}
           validator={
             '+?d{1,4}?[-.s]?(?d{1,3}?)?[-.s]?d{1,4}[-.s]?d{1,4}[-.s]?d{1,9}'
@@ -56,7 +57,7 @@ export const AddContactForm = () => {
             'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +'
           }
           cb={handleChange}
-          value={contact.number}
+          value={contact.phone}
         />
       </label>
       <AddContactBtn type="submit">Add contact</AddContactBtn>
