@@ -4,7 +4,6 @@ import { StyledAddForm } from './AddForm.styled';
 import { AddContactInput } from './AddFormInpt/AddFormInput';
 import { AddContactBtn } from './AddFormInpt/AddFormInput.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { phonebookReducer } from 'redux/slice';
 import { selectContacts } from 'redux/selectors';
 import { addContact } from 'redux/operations';
 

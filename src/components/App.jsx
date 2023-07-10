@@ -14,7 +14,7 @@ export const App = () => {
   // console.log(contactsTest);
   useEffect(() => {
     dispatch(getAllContacts());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

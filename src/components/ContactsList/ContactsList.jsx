@@ -5,10 +5,8 @@ import {
   StyledContact,
 } from './ContactsList.styled';
 
-import { phonebookReducer } from 'redux/slice';
 import { selectContacts, selectFilter } from 'redux/selectors';
-import { delContact, getAllContacts } from 'redux/operations';
-import { useEffect } from 'react';
+import { delContact } from 'redux/operations';
 
 export const ContactsList = () => {
   const dispatch = useDispatch();
