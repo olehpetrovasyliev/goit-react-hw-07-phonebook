@@ -5,7 +5,7 @@ import {
   StyledContact,
 } from './ContactsList.styled';
 
-import { delContact } from 'redux/slice';
+import { phonebookReducer } from 'redux/slice';
 import { selectContacts, selectFilter } from 'redux/selectors';
 
 export const ContactsList = () => {
@@ -25,7 +25,7 @@ export const ContactsList = () => {
           {contact.name}:{contact.number}
           <DelBtnStyled
             onClick={() => {
-              dispatch(delContact(contact.id));
+              dispatch(phonebookReducer.delContact(contact.id));
             }}
           >
             Delete
