@@ -5,22 +5,24 @@ import {
   StyledContact,
 } from './ContactsList.styled';
 
-import { selectContacts, selectFilter } from 'redux/selectors';
+import {
+  selectContacts,
+  selectFilter,
+  selectFilteredContacts,
+} from 'redux/selectors';
 import { delContact } from 'redux/operations';
 
 export const ContactsList = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
-  const filter = useSelector(selectFilter);
+  // const contacts = useSelector(selectContacts);
+  // const filter = useSelector(selectFilter);
 
   // console.log(contacts);
-  const flteredContacts = contacts.filter(({ name }) =>
-    name.toLowerCase().trim().includes(filter)
-  );
+  const filteredContacts = useSelector(selectFilteredContacts);
 
   return (
     <ContactsListWrapper>
-      {flteredContacts.map(contact => (
+      {filteredContacts.map(contact => (
         <StyledContact key={contact.id}>
           {contact.name}:{contact.phone}
           <DelBtnStyled
