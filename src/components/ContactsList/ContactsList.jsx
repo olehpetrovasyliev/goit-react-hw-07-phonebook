@@ -5,17 +5,11 @@ import {
   StyledContact,
 } from './ContactsList.styled';
 
-import {
-  selectContacts,
-  selectFilter,
-  selectFilteredContacts,
-} from 'redux/selectors';
+import { selectFilteredContacts } from 'redux/selectors';
 import { delContact } from 'redux/operations';
 
 export const ContactsList = () => {
   const dispatch = useDispatch();
-  // const contacts = useSelector(selectContacts);
-  // const filter = useSelector(selectFilter);
 
   // console.log(contacts);
   const filteredContacts = useSelector(selectFilteredContacts);
